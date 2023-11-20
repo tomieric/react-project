@@ -22,6 +22,8 @@ const router = createBrowserRouter([
     path: '/comment',
     element: <Comment />,
   }
-])
+ ], {
+  basename: import.meta.env.PROD ? '/hr-faq/' : '/'
+})
 
 export default router
