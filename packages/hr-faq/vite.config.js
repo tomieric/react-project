@@ -8,6 +8,9 @@ export default defineConfig(({ command }) => {
   return {
     base: command === 'build' ? `/${pkg.name}/` : `/`,
     plugins: [react()],
+    define: {
+      APP_NAME: JSON.stringify(pkg.name),
+    },
     build:{
       outDir: resolve(`../../dist/${pkg.name}`)
     }

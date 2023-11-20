@@ -1,3 +1,3 @@
 export function getAssetsURL(url) {
-  return new URL(url, import.meta.url).href
+  return import.meta.env.PROD ? `/${APP_NAME}/` + url : url
 }
