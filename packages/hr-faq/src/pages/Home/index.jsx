@@ -33,7 +33,7 @@ function Home() {
                 </Link>
               </Grid.Item>
               <Grid.Item>
-                <Link className='block-item' to = 'QA'>
+                <Link className='block-item' to = 'QA?tye=all'>
                   <img src={getAssetsURL('/images/question@2x.png')} />
                   <span>提问</span>
                 </Link>

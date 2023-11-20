@@ -8,6 +8,9 @@ function Lookup() {
   const onBack = () => {
     navigate(-1)
   }
+  const toQALink = (type) => {
+    navigate(`/qa?type=${type}`)
+  }
 
   return (
     <>
@@ -16,22 +19,22 @@ function Lookup() {
         <List.Item
           description='各类福利答疑'
           prefix={<img src={getAssetsURL('/images/fuli@2x.png')} className='icon-img' />}
-          onClick={() => {}}
+          onClick={() => toQALink(1)}
         >福利</List.Item>
         <List.Item
           description='月度绩效'
           prefix={<img src={getAssetsURL('/images/jixiao@2x.png')} className='icon-img' />}
-          onClick={() => {}}
+          onClick={() => toQALink(2)}
         >绩效</List.Item>
         <List.Item
           description='升职加薪'
           prefix={<img src={getAssetsURL('/images/jinsheng@2x.png')} className='icon-img' />}
-          onClick={() => {}}
+          onClick={() => toQALink(3)}
         >晋升</List.Item>
         <List.Item
           description='其他疑问'
           prefix={<img src={getAssetsURL('/images/qita@2x.png')} className='icon-img' />}
-          onClick={() => {}}
+          onClick={() => toQALink(4)}
         >自由提问</List.Item>
       </List>
     </>
