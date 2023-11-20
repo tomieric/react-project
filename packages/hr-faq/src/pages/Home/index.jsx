@@ -1,5 +1,6 @@
 import { NavBar, Swiper, Grid } from 'antd-mobile'
 import { Link } from 'react-router-dom'
+import { getAssetsURL } from '../../utils'
 import './index.scss'
 
 function Home() {
@@ -27,19 +28,19 @@ function Home() {
             <Grid columns={3} gap={15}>
               <Grid.Item>
                 <Link to='/Lookup' className='block-item'>
-                  <img src='/images/search@2x.png' />
+                  <img src={ getAssetsURL('/images/search@2x.png') } />
                   <span>自助查询</span>
                 </Link>
               </Grid.Item>
               <Grid.Item>
                 <Link className='block-item' to = 'QA'>
-                  <img src='/images/question@2x.png' />
+                  <img src={getAssetsURL('/images/question@2x.png')} />
                   <span>提问</span>
                 </Link>
               </Grid.Item>
               <Grid.Item>
                 <Link className='block-item' to='/comment'>
-                  <img src='/images/comment@2x.png' />
+                  <img src={getAssetsURL('/images/comment@2x.png')} />
                   <span>反馈意见</span>
                 </Link>
               </Grid.Item>
