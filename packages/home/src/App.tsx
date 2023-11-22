@@ -97,7 +97,7 @@ function App() {
   return (
     <div className="bg-white">
       <header>
-        <div className="container mx-auto px-6 py-3">
+        <div className="container mx-auto px-6 py-12">
           <Header />
           <Search onSearch={onSearch} />
         </div>
