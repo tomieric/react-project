@@ -23,7 +23,8 @@ const router = createBrowserRouter([
     element: <Comment />,
   }
  ], {
-  basename: import.meta.env.PROD ? `/${APP_NAME}/` : '/'
+  // basename: import.meta.env.PROD ? `/${APP_NAME}/` : '/'
+  basename: import.meta.env.BASE_URL
 })
 
 export default router

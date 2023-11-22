@@ -1,3 +1,3 @@
 export function getAssetsURL(url) {
-  return import.meta.env.PROD ? `/${APP_NAME}/` + url : url
+  return import.meta.env.BASE_URL + url.replace(/^\//, '')
 }
