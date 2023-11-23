@@ -1,3 +1,5 @@
+import { utils } from 'shared'
+
 export function getAssetsURL(url) {
-  return import.meta.env.BASE_URL + url.replace(/^\//, '')
+  return utils.resolve(import.meta.env.BASE_URL, url)
 }
