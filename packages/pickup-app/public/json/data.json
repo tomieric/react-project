@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "type": "bgyp",
+    "name": "📒 办公用品",
+    "categories": [
+      {
+        "id": 11,
+        "name": "办公分类一",
+        "materials": [{
+          "image": "https://images.unsplash.com/photo-1668853060178-2d53667b7345?q=80&w=200&h=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "id": 1,
+          "title": "'办公商品 1'",
+          "quantity": 2
+        }]
+      },
+      {
+        "id": 12,
+        "name": "办公分类二",
+        "materials": [{
+          "image": "https://images.unsplash.com/photo-1668853060178-2d53667b7345?q=80&w=200&h=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "id": 1,
+          "title": "'办公商品 1'",
+          "quantity": 2
+        }]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "ylyp",
+    "name": "😷 医疗用品"
+  },
+  {
+    "id": 3,
+    "type": "dnhc",
+    "name": "💻 电脑耗材"
+  },
+  {
+    "id": 4,
+    "type": "shyp",
+    "name": "⚽️ 生活用品"
+  },
+  {
+    "id": 5,
+    "type": "fllp",
+    "name": "🎁 福利礼品"
+  }
+]

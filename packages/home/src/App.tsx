@@ -12,9 +12,9 @@ function App() {
   const [caseList] = useState<CaseData[]>([
     {
       id: 0,
-      title: 'HR FAQ',
-      desc: '行政人事问答帮助中心',
-      url: '/hr-faq/',
+      title: '物资领取平台',
+      desc: '通过扫码轻松打开应用进行物资领取，并可查询领取记录',
+      url: '/pickup-app/',
       posts: 'https://images.unsplash.com/photo-1577655197620-704858b270ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=144',
       stack: ['react']
     },
