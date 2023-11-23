@@ -6,9 +6,6 @@ import 'normalize.css'
 import './index.css'
 import router from './router/index.jsx'
 
-import * as a from 'shared'
-console.log(a)
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className='app'>
