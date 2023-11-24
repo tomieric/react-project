@@ -1,4 +1,4 @@
-import { createHashRouter, RouteObject } from 'react-router-dom'
+import { createBrowserRouter, RouteObject } from 'react-router-dom'
 
 import App from '../App.tsx'
 import Records from '@/pages/Records.tsx'
@@ -7,7 +7,8 @@ import RecordDetail from '@/pages/RecordDetai.tsx'
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <App />
+    element: <App />,
+    index: true
   },
   {
     path: '/records',
@@ -19,7 +20,7 @@ const routes: RouteObject[] = [
   }
 ]
 
-const router = createHashRouter(routes, {
+const router = createBrowserRouter(routes, {
   basename: `${import.meta.env.BASE_URL}`
 })
 
