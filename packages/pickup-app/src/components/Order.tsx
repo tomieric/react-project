@@ -1,10 +1,13 @@
+import { FC } from "react"
 import { Mask, Button } from "antd-mobile"
-import { FC, useState } from "react"
+import { useStoreDispatch, useStoreSelector } from "@/store/hooks"
+import { setOrdering } from "@/store/reducers/cart"
 
 const Order:FC = () => {
-  const [visible, setVisible] = useState(false)
+  const dispatch = useStoreDispatch()
+  const visible = useStoreSelector(state => state.cart.ordering)
   function closeModal() {
-    setVisible(false)
+    dispatch(setOrdering(false))
   }
   return (
     <Mask visible={visible} onMaskClick={closeModal}>
@@ -12,7 +15,12 @@ const Order:FC = () => {
         <div className='order'>
           <div className='order-img'></div>
           <div className='order-content'>您的货品正在出货，请稍等片刻</div>
-          <Button block={ true } color='primary' shape='rounded'>确定</Button>
+          <Button
+            block={ true }
+            color='primary'
+            shape='rounded'
+            onClick={closeModal}
+          >确定</Button>
           </div>
       </div>
     </Mask>

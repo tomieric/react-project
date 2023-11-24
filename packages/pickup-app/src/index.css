@@ -4,6 +4,8 @@
   --text-secondary: #666666;
   --text-placeholder: #999999;
   --border-color: #E5E5E5;
+  --background-color: #F8F8F7;
+  --color-primary: #1D62E0;
 
   font-family: PingFangSC, PingFang SC, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -24,7 +26,7 @@ html, body {
   height: 100%;
   overflow: hidden;
 
-  --adm-color-primary: #1D62E0;
+  --adm-color-primary: var(--color-primary);
 }
 
 /* reset */

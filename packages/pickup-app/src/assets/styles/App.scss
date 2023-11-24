@@ -243,6 +243,7 @@
     font-weight: 400;
 
     > b {
+      margin: 0 4px;
       font-weight: 600;
       color: #FF4229;
     }
@@ -260,4 +261,10 @@
     margin: 0;
     padding: 10px 16px 0;
   }
+}
+
+/* records */
+.records {
+  flex: 1;
+  background: var(--background-color);
 }

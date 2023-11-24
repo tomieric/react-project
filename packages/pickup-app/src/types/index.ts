@@ -19,3 +19,9 @@ export interface Category {
   name: string,
   categories: CategoryItem[]
 }
+
+export interface RecordData { 
+  id: string
+  date: string
+  materials: Materials[]
+}

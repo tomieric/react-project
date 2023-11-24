@@ -1,24 +1,48 @@
 import { Button, Badge, Popup, SafeArea } from "antd-mobile"
 import { useState } from "react"
+import classnames from 'classnames'
 
 import Cart from "./Cart"
+import { useStoreDispatch, useStoreSelector } from "@/store/hooks"
+import { setOrdering } from "@/store/reducers/cart"
 
 function SubmitBar() {
+  const dispatch = useStoreDispatch()
+  const materials = useStoreSelector(state => state.cart.list)
   const [cartVisible, setCartVisible] = useState(false)
   function showCart() {
+    // if (!materials.length) {
+    //   return
+    // }
     setCartVisible(true)
   }
   function closeCart() {
     setCartVisible(false)
   }
+  function toOrder() {
+    dispatch(setOrdering(true))
+  }
+
   return (
     <>
       <div className='submitbar'>
-        <Badge content='3' style={{'--right': '30%', '--top': '20%'}}>
-          <div className='icon-cart active' onClick={showCart}></div>
+        <Badge
+          content={materials.length > 0 ? materials.length : null}
+          style={{'--right': '30%', '--top': '20%'}}
+        >
+          <div
+            className={classnames(['icon-cart', materials.length > 0 && 'active'])}
+            onClick={showCart}
+          ></div>
         </Badge>
-        <div className='submitbar-total'>已选 <b>3</b> 件</div>
-        <Button color='primary' shape='rounded' style={{minWidth: '150px'}}>确认领取</Button>
+        <div className='submitbar-total'>已选 <b>{materials.length}</b> 件</div>
+        <Button
+          disabled={ materials.length === 0 }
+          color='primary'
+          shape='rounded'
+          style={{minWidth: '150px'}}
+          onClick={toOrder}
+        >确认领取</Button>
       </div>
       <Popup 
         visible={cartVisible}
