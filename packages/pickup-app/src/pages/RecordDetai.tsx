@@ -31,7 +31,7 @@ const RecordDetail: FC = () => {
         <List mode='card'>
           { recordMaterials.map(material => (
             <List.Item key={material.id}>
-              <MaterialItem {...material} showCount={true} showAction={false} showCountText={false} />
+              <MaterialItem {...material} quantity={material.count!} showCount={true} showAction={false} showCountText={false} />
             </List.Item>
           ))}
         </List>

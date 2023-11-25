@@ -3,6 +3,7 @@ export interface Materials {
   title: string
   image: string
   quantity: number
+  count?: number
 }
 
 export interface CategoryItem {
