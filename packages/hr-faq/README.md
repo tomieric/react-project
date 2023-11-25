@@ -2,6 +2,14 @@
 
 > HR 人事问答库
 
+[https://react-project-goldriver.vercel.app/hr-faq/](https://react-project-goldriver.vercel.app/hr-faq/)
+
+## 技术栈
+
+* react
+* react-route-dom
+* antd-mobile
+
 ## 运行
 
 ```bash

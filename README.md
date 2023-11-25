@@ -4,4 +4,5 @@
 
 ## SHOWCASE
 
-* [hr-faq](./packages/hr-faq/README.md)
+* [HR FAQ](./packages/hr-faq/README.md)
+* [物资领取](./packages/pickup-app/README.md)
