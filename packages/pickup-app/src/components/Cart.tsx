@@ -1,4 +1,5 @@
-import { Button } from "antd-mobile"
+import { Button, ErrorBlock } from "antd-mobile"
+import { ShopbagOutline } from 'antd-mobile-icons'
 import { nanoid } from 'nanoid'
 import dayjs from 'dayjs'
 import Material from "./Material"
@@ -42,6 +43,7 @@ function Cart(props: Props) {
       </header>
       <main className='cart-bd'>
         <Material data={cartMaterials} />
+        { cartMaterials.length === 0 && <ErrorBlock image={<ShopbagOutline style={{fontSize: '48px', color: 'var(--text-placeholder)'}} />} status='empty' title='暂无数据' description='请先选择物资' />}
       </main>
       <footer className='cart-footer'>
         <Button block={true} shape='rounded' onClick={props.onClose}>关闭</Button>
