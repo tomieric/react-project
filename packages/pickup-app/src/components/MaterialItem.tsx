@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import CartAction from "./CartAaction";
-import { useStoreDispatch } from "@/store/hooks";
+import { useStoreDispatch, useStoreSelector } from "@/store/hooks";
 import { addCart, removeCart } from "@/store/reducers/cart";
 import { Materials } from "@/types";
 import { Toast } from "antd-mobile";
@@ -15,6 +15,11 @@ export interface Props extends Materials {
 
 const MaterialItem: FC<Props> = (props) => {
   const dispatch = useStoreDispatch()
+  const cartObj = useStoreSelector(state => state.cart.cartObj)
+
+  const count = useMemo(() => {
+    return cartObj[props.id] ?? 0
+  }, [cartObj])
   
   function onInc() {
     // 限制不超过库存
@@ -25,8 +30,7 @@ const MaterialItem: FC<Props> = (props) => {
     //   })
     //   return
     // }
-    console.log(props.count)
-    if (props.count === 1) {
+    if (count === 1) {
       Toast.show({
         icon: <FrownOutline />,
         content: '每次只能领取一件'
@@ -39,18 +43,18 @@ const MaterialItem: FC<Props> = (props) => {
       title: props.title,
       image: props.image,
       quantity: props.quantity,
-      count: props.count! + 1
+      count: count + 1
     }))
   }
 
   function onDec() {
-    if (props.count && props.count > 0) {
+    if (count && count > 0) {
       dispatch(removeCart({
         id: props.id,
         title: props.title,
         image: props.image,
         quantity: props.quantity,
-        count: props.count - 1
+        count: count - 1
       }))
     }
   }
@@ -67,7 +71,7 @@ const MaterialItem: FC<Props> = (props) => {
             件</div>
         ) }
       </div>
-      { props.showAction !== false && <CartAction value={ props.count } onDec={onDec} onInc={onInc} /> }
+      { props.showAction !== false && <CartAction value={ count } onDec={onDec} onInc={onInc} /> }
     </div>
   )
 }

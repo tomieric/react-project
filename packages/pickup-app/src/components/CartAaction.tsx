@@ -7,7 +7,7 @@ interface Props {
 }
 
 const CartAction: FC<Props> = (props) => {
-  const count = props.value ?? 0
+  const count = props.value || 0
   return (
     <div className='cart-action'>
       { count > 0 && (<>

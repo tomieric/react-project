@@ -1,10 +1,13 @@
 import { Button, Badge, Popup, SafeArea } from "antd-mobile"
 import { useState } from "react"
 import classnames from 'classnames'
+import { nanoid } from 'nanoid'
+import dayjs from 'dayjs'
 
 import Cart from "./Cart"
 import { useStoreDispatch, useStoreSelector } from "@/store/hooks"
 import { setOrdering } from "@/store/reducers/cart"
+import { addRecords } from "@/store/reducers/records"
 
 function SubmitBar() {
   const dispatch = useStoreDispatch()
@@ -21,6 +24,11 @@ function SubmitBar() {
   }
   function toOrder() {
     dispatch(setOrdering(true))
+    dispatch(addRecords({
+      id: nanoid(8),
+      date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+      materials
+    }))
   }
 
   return (

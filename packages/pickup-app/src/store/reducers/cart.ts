@@ -1,17 +1,24 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Materials } from '@/types'
+import { AppDispatch } from '..'
 
 interface CartMaterial extends Materials {
   count: number
 }
 
+type CartObj = {
+  [key: string]: number
+}
+
 interface CartState {
   list: CartMaterial[]
+  cartObj: CartObj
   ordering: boolean
 }
 
 const initialState: CartState = {
   list: [],
+  cartObj: {},
   ordering: false
 }
 
@@ -22,8 +29,15 @@ const cartSlice = createSlice({
     setOrdering(state, action: PayloadAction<boolean>) {
       state.ordering = action.payload
     },
-
-    addCart: (state, action: PayloadAction<CartMaterial>) => {
+    updateCartObj(state) {
+      state.cartObj = state.list.reduce((result: CartObj, material: CartMaterial) => {
+        if (material && material.id) {
+          result[material.id] = material.count
+        }
+        return result
+      }, {})
+    },
+    addCartBase: (state, action: PayloadAction<CartMaterial>) => {
       const cart = state.list.find((cart) => cart.id === action.payload.id)
       
       if (cart) {
@@ -33,7 +47,7 @@ const cartSlice = createSlice({
 
       state.list.push(action.payload)
     },
-    removeCart: (state, action: PayloadAction < CartMaterial >) => {
+    removeCartBase: (state, action: PayloadAction < CartMaterial >) => {
       const cart = state.list.find(cart => cart.id === action.payload.id)
       if (cart) {
         // 减数量
@@ -45,12 +59,34 @@ const cartSlice = createSlice({
         }
       }
     },
-    clearCart: (state) => {
+    clearCartBase: (state) => {
       state.list = []
     }
   }
 })
 
-export const { addCart, removeCart, clearCart, setOrdering } = cartSlice.actions
+export const { addCartBase, removeCartBase, clearCartBase, setOrdering, updateCartObj } = cartSlice.actions
+
+// thunk
+export const addCart = (material: CartMaterial) => {
+  return async(dispatch: AppDispatch) => {
+    dispatch(addCartBase(material))
+    dispatch(updateCartObj())
+  }
+}
+
+export const removeCart = (material: CartMaterial) => {
+  return async(dispatch: AppDispatch) => {
+    dispatch(removeCartBase(material))
+    dispatch(updateCartObj())
+  }
+}
+
+export const clearCart = () => {
+  return async(dispatch: AppDispatch) => {
+    dispatch(clearCartBase())
+    dispatch(updateCartObj())
+  }
+}
 
 export default cartSlice.reducer
