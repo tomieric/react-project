@@ -1,13 +1,14 @@
-import { FC } from "react";
+import { FC, MouseEvent, memo } from "react";
 
 interface Props {
   value?: number
-  onDec: () => void
-  onInc: () => void
+  onDec: (e: MouseEvent<HTMLElement>) => void
+  onInc: (e: MouseEvent<HTMLElement>) => void
 }
 
-const CartAction: FC<Props> = (props) => {
+const CartAction: FC<Props> = memo((props) => {
   const count = props.value || 0
+
   return (
     <div className='cart-action'>
       { count > 0 && (<>
@@ -19,6 +20,6 @@ const CartAction: FC<Props> = (props) => {
       { count === 0 && <span className='icon-cart active' onClick={props.onInc}></span> }
     </div>
   )
-}
+})
 
 export default CartAction

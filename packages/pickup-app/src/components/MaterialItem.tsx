@@ -1,10 +1,11 @@
-import { FC, useMemo } from "react";
+import { FC, useMemo, MouseEvent } from "react";
 import CartAction from "./CartAaction";
 import { useStoreDispatch, useStoreSelector } from "@/store/hooks";
 import { addCart, removeCart } from "@/store/reducers/cart";
 import { Materials } from "@/types";
 import { Toast } from "antd-mobile";
 import { FrownOutline } from 'antd-mobile-icons'
+import { useAddToCart } from "@/hooks";
 
 export interface Props extends Materials {
   count?: number,
@@ -14,6 +15,7 @@ export interface Props extends Materials {
 }
 
 const MaterialItem: FC<Props> = (props) => {
+  const { playAnimation } = useAddToCart('#cart-icon')
   const dispatch = useStoreDispatch()
   const cartObj = useStoreSelector(state => state.cart.cartObj)
 
@@ -21,7 +23,7 @@ const MaterialItem: FC<Props> = (props) => {
     return cartObj[props.id] ?? 0
   }, [cartObj])
   
-  function onInc() {
+  function onInc(e: MouseEvent<HTMLElement>) {
     // 限制不超过库存
     // if (props.count === props.quantity) {
     //   Toast.show({
@@ -37,6 +39,8 @@ const MaterialItem: FC<Props> = (props) => {
       })
       return
     }
+
+    playAnimation(e.currentTarget)
 
     dispatch(addCart({
       id: props.id,

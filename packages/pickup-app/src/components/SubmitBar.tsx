@@ -39,6 +39,7 @@ function SubmitBar() {
           style={{'--right': '30%', '--top': '20%'}}
         >
           <div
+            id="cart-icon"
             className={classnames(['icon-cart', materials.length > 0 && 'active'])}
             onClick={showCart}
           ></div>

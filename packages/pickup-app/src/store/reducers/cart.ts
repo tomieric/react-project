@@ -29,7 +29,7 @@ const cartSlice = createSlice({
     setOrdering(state, action: PayloadAction<boolean>) {
       state.ordering = action.payload
     },
-    updateCartObj(state) {
+    updateCartData(state) {
       state.cartObj = state.list.reduce((result: CartObj, material: CartMaterial) => {
         if (material && material.id) {
           result[material.id] = material.count
@@ -65,27 +65,27 @@ const cartSlice = createSlice({
   }
 })
 
-export const { addCartBase, removeCartBase, clearCartBase, setOrdering, updateCartObj } = cartSlice.actions
+export const { addCartBase, removeCartBase, clearCartBase, setOrdering, updateCartData } = cartSlice.actions
 
 // thunk
 export const addCart = (material: CartMaterial) => {
   return async(dispatch: AppDispatch) => {
     dispatch(addCartBase(material))
-    dispatch(updateCartObj())
+    dispatch(updateCartData())
   }
 }
 
 export const removeCart = (material: CartMaterial) => {
   return async(dispatch: AppDispatch) => {
     dispatch(removeCartBase(material))
-    dispatch(updateCartObj())
+    dispatch(updateCartData())
   }
 }
 
 export const clearCart = () => {
   return async(dispatch: AppDispatch) => {
     dispatch(clearCartBase())
-    dispatch(updateCartObj())
+    dispatch(updateCartData())
   }
 }
 
