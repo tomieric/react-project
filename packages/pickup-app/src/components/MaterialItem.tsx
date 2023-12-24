@@ -12,6 +12,7 @@ export interface Props extends Materials {
   showCount?: boolean
   showAction?: boolean
   showCountText?: boolean
+  showImagePriview?: (image: string) => void
 }
 
 const MaterialItem: FC<Props> = (props) => {
@@ -65,7 +66,7 @@ const MaterialItem: FC<Props> = (props) => {
 
   return (
     <div className='material-item'>
-      <img src={ props.image } className='material-img' />
+      <img src={ props.image } className='material-img' onClick={() => props?.showImagePriview?.(props.image)} />
       <div className='material-content'>
         <div className='material-title'>{props.title}</div>
         { props.showCount && (

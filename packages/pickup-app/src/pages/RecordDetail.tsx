@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { List, NavBar } from "antd-mobile"
-import { FC, useEffect } from "react"
+import { ImageViewer, List, NavBar } from "antd-mobile"
+import { FC, useEffect, useState } from "react"
 
 import MaterialItem from '@/components/MaterialItem'
 import { getRecords, useRecordSelector } from '@/store/reducers/records'
@@ -13,6 +13,14 @@ const RecordDetail: FC = () => {
 
   const records = useStoreSelector(state => state.records.list)
   const recordMaterials = useStoreSelector(useRecordSelector(params.id!))
+
+  const [image, setImage] = useState('')
+  const [imageVisible, setImageVisible] = useState(false)
+
+  function showImagePriview(image: string) {
+    setImage(image)
+    setImageVisible(true)
+  }
 
   useEffect(() => {
     if (!records.length)
@@ -31,10 +39,19 @@ const RecordDetail: FC = () => {
         <List mode='card'>
           { recordMaterials.map(material => (
             <List.Item key={material.id}>
-              <MaterialItem {...material} quantity={material.count!} showCount={true} showAction={false} showCountText={false} />
+              <MaterialItem
+                {...material}
+                quantity={material.count!}
+                showCount={true}
+                showAction={false}
+                showCountText={false}
+                showImagePriview={showImagePriview}
+              />
             </List.Item>
           ))}
         </List>
+
+        <ImageViewer image={image} visible={imageVisible} onClose={() => setImageVisible(false)}></ImageViewer>
       </main>
     </div>
   )
