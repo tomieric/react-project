@@ -20,9 +20,9 @@ function App() {
     },
     {
       id: 1,
-      title: 'HR FAQ',
-      desc: '行政人事问答帮助中心',
-      url: '/hr-faq/',
+      title: 'Todo',
+      desc: '工作计划',
+      url: '/todo/',
       posts: 'https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
       stack: ['react']
     },
